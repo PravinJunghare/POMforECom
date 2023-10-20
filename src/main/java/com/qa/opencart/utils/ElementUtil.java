@@ -1,4 +1,5 @@
 package com.qa.opencart.utils;
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,23 +18,38 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.qa.opencart.factory.DriverFactory;
+
 public class ElementUtil {
 
 	private WebDriver driver;
+	private JavaScriptUtil javaScriptUtil;
 
 	public ElementUtil(WebDriver driver) {
 		this.driver = driver;
+		javaScriptUtil = new JavaScriptUtil(driver);
 	}
 
+	/*
+	 * public WebElement getElement(By locator) { return
+	 * driver.findElement(locator); }
+	 */
+
+	// for Highlight and Return
+	// Written here because it applicable to all the elements
+
 	public WebElement getElement(By locator) {
-		return driver.findElement(locator);
+		WebElement element = driver.findElement(locator);
+		if (Boolean.parseBoolean(DriverFactory.highlight)) {
+			javaScriptUtil.flash(element);
+		}
+		return element;
 	}
 
 	public WebElement getElement(By locator, int timeOut) {
 		return waitForElementVisible(locator, timeOut);
 	}
-	
-	
+
 	public List<WebElement> getElements(By locator) {
 		return driver.findElements(locator);
 	}
@@ -184,11 +200,12 @@ public class ElementUtil {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
-	
+
 	/**
-	 * An expectation for checking that all elements present on the web page 
-	 * that match the locator are visible. Visibility means that the elements are not only displayed 
-	 * but also have a height and width that is greater than 0.
+	 * An expectation for checking that all elements present on the web page that
+	 * match the locator are visible. Visibility means that the elements are not
+	 * only displayed but also have a height and width that is greater than 0.
+	 * 
 	 * @param locator
 	 * @param timeOut
 	 * @return
@@ -197,10 +214,11 @@ public class ElementUtil {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
 	}
-	
-	
+
 	/**
-	 * An expectation for checking that there is at least one element present on a web page.
+	 * An expectation for checking that there is at least one element present on a
+	 * web page.
+	 * 
 	 * @param locator
 	 * @param timeOut
 	 * @return
@@ -209,7 +227,6 @@ public class ElementUtil {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
 	}
-	
 
 	/**
 	 * 
@@ -266,29 +283,31 @@ public class ElementUtil {
 		return wait.until(ExpectedConditions.urlContains(urlFractionValue));
 
 	}
-	
+
 	public void waitForFrameAndSwitchToItByIDOrName(int timeOut, String idOrName) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(idOrName));
 	}
-	
+
 	public void waitForFrameAndSwitchToItByIndex(int timeOut, int frameIndex) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameIndex));
 	}
-	
+
 	public void waitForFrameAndSwitchToItByFrameElement(int timeOut, WebElement frameElement) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameElement));
 	}
-	
+
 	public void waitForFrameAndSwitchToItByFrameLoctor(int timeOut, By frameLocator) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameLocator));
 	}
 
 	/**
-	 * An expectation for checking an element is visible and enabled such that you can click it.
+	 * An expectation for checking an element is visible and enabled such that you
+	 * can click it.
+	 * 
 	 * @param timeOut
 	 * @param locator
 	 */
@@ -296,44 +315,34 @@ public class ElementUtil {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
 	}
-	
+
 	public WebElement waitForElementToBeClickable(int timeOut, By locator) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		return wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}
-	
+
 	public void doClickWithActionsAndWait(int timeOut, By locator) {
 		WebElement ele = waitForElementToBeClickable(timeOut, locator);
 		Actions act = new Actions(driver);
 		act.click(ele).build().perform();
 	}
-	
-	
+
 	public WebElement waitForElementPresenceWithFluentWait(int timeOut, int pollingTime, By locator) {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-				.withTimeout(Duration.ofSeconds(timeOut))
-				.ignoring(NoSuchElementException.class)
-				.ignoring(StaleElementReferenceException.class)
-				.pollingEvery(Duration.ofSeconds(pollingTime))
-				.withMessage("...element is not found on the page....");
-		
-		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));								
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(timeOut))
+				.ignoring(NoSuchElementException.class).ignoring(StaleElementReferenceException.class)
+				.pollingEvery(Duration.ofSeconds(pollingTime)).withMessage("...element is not found on the page....");
+
+		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 
 	}
-	
-	
+
 	public void waitForAlertWithFluentWait(int timeOut, int pollingTime) {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-				.withTimeout(Duration.ofSeconds(timeOut))
-				.ignoring(NoAlertPresentException.class)
-				.pollingEvery(Duration.ofSeconds(pollingTime))
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(timeOut))
+				.ignoring(NoAlertPresentException.class).pollingEvery(Duration.ofSeconds(pollingTime))
 				.withMessage("...Alert is not found on the page....");
-		
-		 wait.until(ExpectedConditions.alertIsPresent());								
+
+		wait.until(ExpectedConditions.alertIsPresent());
 
 	}
-	
-	
-	
-	
+
 }

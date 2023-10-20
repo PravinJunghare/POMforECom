@@ -62,6 +62,8 @@ public class LoginPage {
 		// Page Object Model
 
 		// Replace the method by utilites created
+		
+		System.out.println("App credentials  " +un+ ":" +pwd);
 		eleUtil.waitForElementVisible(emaiId, 30).sendKeys(un);
 		eleUtil.doSendKeys(password, pwd);
 		eleUtil.doClick(loginBtn);

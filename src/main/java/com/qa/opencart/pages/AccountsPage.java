@@ -25,6 +25,9 @@ public class AccountsPage {
 	private By logoutlink = By.linkText("Logout");
 	private By accountPageHeader = By.xpath("//div[@id ='content']/h2");
 	private By search = By.name("search");
+	private By searchIcon = By.cssSelector("#search button");
+
+
 
 	public String AccountsPageTitle() {
 		// String title = driver.getTitle();
@@ -64,7 +67,17 @@ public class AccountsPage {
 			accHeaderValueList.add(text);
 		}
 		return accHeaderValueList;
+	}
 
+	public void getSearchProductsCount() {
+
+	}
+
+	// for search the product
+	public SearchPage performSearch(String key) {
+		eleUtil.doSendKeys(search, key);
+		eleUtil.doClick(searchIcon);
+		return new SearchPage(driver);
 	}
 
 }

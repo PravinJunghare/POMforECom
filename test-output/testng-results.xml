@@ -1,37 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-10-17T17:33:12 IST" name="Default suite" finished-at="2023-10-17T17:33:23 IST" duration-ms="11828">
+  <suite started-at="2023-10-31T13:52:56 IST" name="Default suite" finished-at="2023-10-31T13:53:25 IST" duration-ms="29058">
     <groups>
     </groups>
-    <test started-at="2023-10-17T17:33:12 IST" name="Default test" finished-at="2023-10-17T17:33:23 IST" duration-ms="11828">
-      <class name="com.qa.opencart.test.LoginPageTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.qa.opencart.test.LoginPageTest@1ed4ae0f]" started-at="2023-10-17T17:33:12 IST" name="setup" finished-at="2023-10-17T17:33:19 IST" duration-ms="7892" status="PASS">
+    <test started-at="2023-10-31T13:52:56 IST" name="Default test" finished-at="2023-10-31T13:53:25 IST" duration-ms="29058">
+      <class name="com.qa.opencart.test.ProductPageInfoTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.qa.opencart.test.ProductPageInfoTest@563f38c4]" started-at="2023-10-31T13:52:56 IST" name="setup" finished-at="2023-10-31T13:53:07 IST" duration-ms="11167" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="LoginPageTitleTest()[pri:1, instance:com.qa.opencart.test.LoginPageTest@1ed4ae0f]" started-at="2023-10-17T17:33:19 IST" name="LoginPageTitleTest" finished-at="2023-10-17T17:33:20 IST" duration-ms="40" status="PASS">
+        <test-method is-config="true" signature="productInfoPageSetup()[pri:0, instance:com.qa.opencart.test.ProductPageInfoTest@563f38c4]" started-at="2023-10-31T13:53:07 IST" name="productInfoPageSetup" finished-at="2023-10-31T13:53:10 IST" duration-ms="3459" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- LoginPageTitleTest -->
-        <test-method signature="LoginUrtTest()[pri:2, instance:com.qa.opencart.test.LoginPageTest@1ed4ae0f]" started-at="2023-10-17T17:33:20 IST" name="LoginUrtTest" finished-at="2023-10-17T17:33:20 IST" duration-ms="29" status="PASS">
+        </test-method> <!-- productInfoPageSetup -->
+        <test-method signature="productImageCountTest(java.lang.String,java.lang.String,int)[pri:0, instance:com.qa.opencart.test.ProductPageInfoTest@563f38c4]" started-at="2023-10-31T13:53:10 IST" name="productImageCountTest" data-provider="getproductImageTestData" finished-at="2023-10-31T13:53:15 IST" duration-ms="4714" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[MacBook Pro]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[MacBook Pro]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- LoginUrtTest -->
-        <test-method signature="forgotPassworLinkTest()[pri:3, instance:com.qa.opencart.test.LoginPageTest@1ed4ae0f]" started-at="2023-10-17T17:33:20 IST" name="forgotPassworLinkTest" finished-at="2023-10-17T17:33:20 IST" duration-ms="139" status="PASS">
+        </test-method> <!-- productImageCountTest -->
+        <test-method signature="productImageCountTest(java.lang.String,java.lang.String,int)[pri:0, instance:com.qa.opencart.test.ProductPageInfoTest@563f38c4]" started-at="2023-10-31T13:53:15 IST" name="productImageCountTest" data-provider="getproductImageTestData" finished-at="2023-10-31T13:53:19 IST" duration-ms="4210" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[iMac]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[iMac]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- forgotPassworLinkTest -->
-        <test-method signature="loginTest()[pri:4, instance:com.qa.opencart.test.LoginPageTest@1ed4ae0f]" started-at="2023-10-17T17:33:20 IST" name="loginTest" finished-at="2023-10-17T17:33:23 IST" duration-ms="3301" status="PASS">
+        </test-method> <!-- productImageCountTest -->
+        <test-method signature="productImageCountTest(java.lang.String,java.lang.String,int)[pri:0, instance:com.qa.opencart.test.ProductPageInfoTest@563f38c4]" started-at="2023-10-31T13:53:19 IST" name="productImageCountTest" data-provider="getproductImageTestData" finished-at="2023-10-31T13:53:24 IST" duration-ms="4749" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[MacBook Air]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[MacBook Air]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- loginTest -->
-        <test-method is-config="true" signature="teardown()[pri:0, instance:com.qa.opencart.test.LoginPageTest@1ed4ae0f]" started-at="2023-10-17T17:33:23 IST" name="teardown" finished-at="2023-10-17T17:33:23 IST" duration-ms="326" status="PASS">
+        </test-method> <!-- productImageCountTest -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:com.qa.opencart.test.ProductPageInfoTest@563f38c4]" started-at="2023-10-31T13:53:24 IST" name="teardown" finished-at="2023-10-31T13:53:25 IST" duration-ms="641" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-      </class> <!-- com.qa.opencart.test.LoginPageTest -->
+      </class> <!-- com.qa.opencart.test.ProductPageInfoTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

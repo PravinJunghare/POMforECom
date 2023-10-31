@@ -5,8 +5,8 @@
     <classes>
       <class name="com.qa.opencart.test.AccountsPageTest">
         <methods>
-          <include name="verifyAccountsPageTilteTest"/>
           <include name="setup"/>
+          <include name="searchProductTest" invocation-numbers="3 4"/>
           <include name="accountPageSetup"/>
           <include name="teardown"/>
         </methods>

@@ -53,9 +53,13 @@ public class ElementUtil {
 	public List<WebElement> getElements(By locator) {
 		return driver.findElements(locator);
 	}
-
+/*
+ * first Clear the field and then send the value
+ */
 	public void doSendKeys(By locator, String value) {
-		getElement(locator).sendKeys(value);
+	WebElement element=	getElement(locator);
+	element.clear();
+	element.sendKeys(value);
 	}
 
 	public void doActionsSendKeys(By locator, String value) {
